@@ -127,3 +127,4 @@ $case_studies = new \WP_Query([
 		<?php endif; ?>
 	</div>
 </section>
+

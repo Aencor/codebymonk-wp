@@ -110,3 +110,4 @@ $projects = new \WP_Query([
 		<?php endif; ?>
 	</div>
 </section>
+
