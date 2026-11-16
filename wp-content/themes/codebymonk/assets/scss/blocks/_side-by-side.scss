@@ -1,0 +1,27 @@
+.side-by-side-block {
+  position: relative;
+
+  .side-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .image-content {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .text-content {
+    p {
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+

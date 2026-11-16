@@ -1,39 +1,52 @@
 <?php
+
+/**
+ * Register Custom ACF Gutenberg Blocks
+ *
+ * Implements Gutenberg example preview screenshot support (Rule 7)
+ */
 function register_acf_block_types() {
-	// Solo defines los nombres aquí
 	$block_names = [
 		'hero',
 		'side-by-side',
-		'cards',
-		'tabs',
-		'stats',
 		'cta-label',
 		'logo-grid',
 		'styleguide',
 	];
 
 	foreach ($block_names as $name) {
-		// Generar título legible automáticamente (Hero, CTA Label, etc.)
 		$title = ucwords(str_replace(['-', '_'], ' ', $name));
 
-		// Crear arreglo base del bloque
 		$block = [
 			'name'            => $name,
-			'title'           => __($title),
-			'description'     => __($title),
+			'title'           => __($title, 'codebymonk'),
+			'description'     => __("Bloque {$title} para maquetación flexible", 'codebymonk'),
 			'render_template' => "blocks/{$name}.php",
-			'category'        => 'common',
-			'icon'            => 'editor-alignleft',
-			'keywords'        => [$name],
+			'category'        => 'formatting',
+			'icon'            => 'layout',
+			'keywords'        => [$name, 'codebymonk'],
+			'supports'        => [
+				'align'  => false,
+				'mode'   => true,
+				'jsx'    => true,
+			],
+			// Rule 7: Example preview support for Gutenberg inserter preview
+			'example'         => [
+				'attributes' => [
+					'mode' => 'preview',
+					'data' => [
+						'is_preview' => true,
+					],
+				],
+			],
 		];
 
-		// Si existe un JS con el mismo nombre, lo agrega automáticamente
+		// Modular JS enqueue if present
 		$js_path = get_template_directory() . "/assets/js/{$name}.js";
 		if (file_exists($js_path)) {
 			$block['enqueue_script'] = get_template_directory_uri() . "/assets/js/{$name}.js";
 		}
 
-		// Registrar bloque
 		acf_register_block_type($block);
 	}
 }

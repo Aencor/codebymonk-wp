@@ -1,13 +1,33 @@
 <?php
 
 /**
+ * Functions and definitions for the Codebymonk theme
+ *
+ * @package codebymonk
+ */
+
+// Autoload PHP classes from classes/ directory (Rule 5 & Rule 6)
+spl_autoload_register(function ($class) {
+	$prefix = 'CodeByMonk\\';
+	$base_dir = get_template_directory() . '/classes/';
+	$len = strlen($prefix);
+
+	if (strncmp($prefix, $class, $len) !== 0) {
+		return;
+	}
+
+	$relative_class = substr($class, $len);
+	$file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+
+	if (file_exists($file)) {
+		require_once $file;
+	}
+});
+
+/**
  * Includes
  *
  * The $monk_includes array determines the code library included in your theme.
- * Add or remove files to the array as needed. Supports child theme overrides.
- *
- * Please note that missing files will produce a fatal error.
- *
  */
 $monk_includes = [
 	"functions/init.php", // Initial theme setup and constants
@@ -35,14 +55,29 @@ function nylon_include($includes) {
 }
 nylon_include($monk_includes);
 
-/*
- * Editor styles
- * Uncomment to bring custom styles or fonts into the admin editor.
- * add_theme_support('editor-styles');
- * add_editor_style('/assets/build/style-editor.css');
- *
- */
+// Initialize core optimization and script classes (Rule 5, 14, 16)
+if (class_exists('CodeByMonk\\PageSpeedOptimizer')) {
+	\CodeByMonk\PageSpeedOptimizer::init();
+}
+if (class_exists('CodeByMonk\\SeoManager')) {
+	\CodeByMonk\SeoManager::init();
+}
+if (class_exists('CodeByMonk\\CustomScripts')) {
+	\CodeByMonk\CustomScripts::init();
+}
 
+// Theme Supports for SEO and modern standards
+add_theme_support('title-tag');
+add_theme_support('post-thumbnails');
+add_theme_support('html5', [
+	'search-form',
+	'comment-form',
+	'comment-list',
+	'gallery',
+	'caption',
+	'style',
+	'script',
+]);
 add_theme_support("disable-custom-colors");
 
 add_theme_support("editor-color-palette", [

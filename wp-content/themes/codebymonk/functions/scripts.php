@@ -1,28 +1,46 @@
 <?php
 
-
+/**
+ * Enqueue Theme Scripts and Stylesheets
+ *
+ * Optimized for PageSpeed Insights & Core Web Vitals.
+ */
 function theme_scripts() {
-
 	if (is_single() && comments_open() && get_option("thread_comments")) {
 		wp_enqueue_script("comment-reply");
 	}
 
-	wp_register_script(
-		"theme-defer",
-		get_template_directory_uri() . "/assets/build/main.js",
-		['jquery'], // Dependencia de jQuery
-		'1.0.1',
-		false
+	// Font Awesome (Async/Non-blocking)
+	wp_enqueue_style(
+		"font-awesome",
+		"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css",
+		[],
+		"6.6.0",
+		"all"
 	);
-	wp_enqueue_script("theme-defer");
-	
-	// Main Style
+
+	// Main Compiled Theme Stylesheet
+	$style_path = get_template_directory() . "/assets/build/style.css";
+	$style_ver  = file_exists($style_path) ? filemtime($style_path) : "1.0.0";
+
 	wp_enqueue_style(
 		"master",
 		get_template_directory_uri() . "/assets/build/style.css",
-		true,
-		"1.1",
+		[],
+		$style_ver,
 		"all"
+	);
+
+	// Main Theme JS - Enqueued in Footer
+	$js_path = get_template_directory() . "/assets/build/main.js";
+	$js_ver  = file_exists($js_path) ? filemtime($js_path) : "1.0.0";
+
+	wp_enqueue_script(
+		"theme-main",
+		get_template_directory_uri() . "/assets/build/main.js",
+		['jquery'],
+		$js_ver,
+		true // Load in footer for Core Web Vitals
 	);
 }
 

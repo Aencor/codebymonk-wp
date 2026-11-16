@@ -6,6 +6,12 @@
  * Keywords: Styleguide
  * Align: full
  */
+
+$block_meta = \CodeByMonk\BlockHelper::setup($block ?? ['name' => 'acf/styleguide'], $is_preview ?? false);
+
+if (\CodeByMonk\BlockHelper::render_preview_if_needed($block_meta)) {
+	return;
+}
 ?>
 <section id="styleguide" data-block="styleguide" class="py-5 px-4 sm:px-0">
     <header id="style-head">

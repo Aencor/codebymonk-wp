@@ -1,0 +1,220 @@
+{
+    "key": "group_options_external_scripts",
+    "title": "Options - External Scripts & Custom Code",
+    "fields": [
+        {
+            "key": "field_scripts_acc_main",
+            "label": "External Scripts & Custom Code",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_scripts_tab_head",
+            "label": "Header Scripts (<head>)",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_scripts_header_code",
+            "label": "Header Scripts",
+            "name": "header_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Inyectado directamente en el <head> (e.g. Google Analytics GA4, Google Tag Manager, verificación de Search Console, etc.).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 8,
+            "placeholder": "<!-- Google Tag Manager / Analytics / Custom Head Code -->",
+            "new_lines": ""
+        },
+        {
+            "key": "field_scripts_tab_body",
+            "label": "Body Scripts (<body>)",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_scripts_body_code",
+            "label": "Body Open Scripts",
+            "name": "body_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Inyectado inmediatamente después de abrir <body> (e.g. Google Tag Manager noscript iframe).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 8,
+            "placeholder": "<!-- Google Tag Manager (noscript) -->",
+            "new_lines": ""
+        },
+        {
+            "key": "field_scripts_tab_footer",
+            "label": "Footer Scripts (</body>)",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_scripts_footer_code",
+            "label": "Footer Scripts",
+            "name": "footer_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Inyectado antes del cierre de </body> (e.g. chat widgets, píxeles de conversión, scripts diferidos).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 8,
+            "placeholder": "<!-- Footer Custom Scripts / Tracking Pixels -->",
+            "new_lines": ""
+        },
+        {
+            "key": "field_scripts_tab_adsense",
+            "label": "Google AdSense",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_adsense_enable",
+            "label": "Activar Google AdSense",
+            "name": "enable_adsense",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Habilita la integración de Google AdSense en todo el sitio de forma optimizada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "message": "Activar AdSense",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Sí",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_adsense_pub_id",
+            "label": "Publisher ID de AdSense",
+            "name": "adsense_publisher_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Ejemplo: ca-pub-1234567890123456",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_adsense_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "ca-pub-XXXXXXXXXXXXXXXX",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-external-scripts"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Campos para inyección dinámica de scripts, analíticas y Google AdSense",
+    "show_in_rest": 0,
+    "modified": 1727200000
+}
+
