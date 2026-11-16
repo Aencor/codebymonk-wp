@@ -65,6 +65,9 @@ if (class_exists('CodeByMonk\\SeoManager')) {
 if (class_exists('CodeByMonk\\CustomScripts')) {
 	\CodeByMonk\CustomScripts::init();
 }
+if (class_exists('CodeByMonk\\PostTypes')) {
+	\CodeByMonk\PostTypes::init();
+}
 
 // Theme Supports for SEO and modern standards
 add_theme_support('title-tag');

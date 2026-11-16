@@ -8,6 +8,9 @@ wp-content/themes/twentytwentyfour/
 wp-content/themes/twentytwentythree/
 wp-content/themes/twentytwentytwo/
 wp-content/themes/twentytwentyfive/
+wp-content/cache/
+wp-content/mu-plugins/
+wp-content/autoptimize_404_handler.php
 node_modules/
 **/*.map
 .DS_Store

@@ -8,6 +8,14 @@
 function register_acf_block_types() {
 	$block_names = [
 		'hero',
+		'clients',
+		'portfolio-grid',
+		'case-studies-slider',
+		'start-story',
+		'services',
+		'about',
+		'blog-grid',
+		'cta',
 		'side-by-side',
 		'cta-label',
 		'logo-grid',
@@ -20,17 +28,16 @@ function register_acf_block_types() {
 		$block = [
 			'name'            => $name,
 			'title'           => __($title, 'codebymonk'),
-			'description'     => __("Bloque {$title} para maquetación flexible", 'codebymonk'),
+			'description'     => __("Bloque {$title} para CodeByMonk", 'codebymonk'),
 			'render_template' => "blocks/{$name}.php",
 			'category'        => 'formatting',
 			'icon'            => 'layout',
 			'keywords'        => [$name, 'codebymonk'],
 			'supports'        => [
-				'align'  => false,
-				'mode'   => true,
-				'jsx'    => true,
+				'align' => false,
+				'mode'  => true,
+				'jsx'   => true,
 			],
-			// Rule 7: Example preview support for Gutenberg inserter preview
 			'example'         => [
 				'attributes' => [
 					'mode' => 'preview',
